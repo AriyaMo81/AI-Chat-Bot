@@ -24,7 +24,11 @@ def bot(messages):
 
     response = llm.chat.completions.create(
         model="openai/gpt-oss-120b",
-        messages=messages,
+        messages=[
+            {
+                "role": "user",
+                "content": messages
+            }],
     )
 
     return response.choices[0].message.content
